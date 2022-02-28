@@ -1,38 +1,171 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.3);
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.app > video {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  z-index: -1;
+}
+.app__container {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  color: #fff;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  width: 100%;
+  max-width: 500px;
+  min-height: 500px;
+  border-radius: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+.app__container > span {
+  position: absolute;
+  top: -30px;
+  left: 0px;
+  background: rgba(255, 0, 0, 0.4);
 }
 
-.App-link {
-  color: #61dafb;
+.app__container-input {
+  background: #000;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  padding: 0.3rem 0.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid transparent;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.app__container-input input {
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  outline: none;
+  color: #fff;
+}
+.app__container-input input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 1px;
+}
+.app__container-input button {
+  background: rgba(255, 255, 255, 0.3);
+  width: 50px;
+  height: 100%;
+  padding: 7px;
+  border-radius: 20px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  transform: translateX(150%);
+  opacity: 0;
+}
+.app__container-input input:focus ~ button {
+  transform: translateX(0%);
+  opacity: 1;
 }
 
-@keyframes App-logo-spin {
-  from {
+.app__container-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.app__container-info-city {
+  display: flex;
+  font-size: 1rem;
+  color: #ddd;
+}
+.app__container-info-city span {
+  font-size: 0.7rem;
+}
+.app__container-info-temp {
+  display: flex;
+  justify-content: center;
+}
+.app__container-info-weather {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.app__container-bot {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.app__container-bot-item {
+  background-color: rgba(0, 0, 0, 0.3);
+  flex: 1;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  text-transform: capitalize;
+  color: #ddd;
+  min-width: 103px;
+}
+.app__container-bot-item:hover {
+  color: #fff;
+}
+
+.temp {
+  font-size: 6rem;
+  padding: 0 0.5rem;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.input-error {
+  border: 1px solid rgba(255, 0, 0, 0.4);
+  animation: error 0.4s alternate linear;
+}
+
+@keyframes error {
+  0% {
     transform: rotate(0deg);
   }
-  to {
-    transform: rotate(360deg);
+  25% {
+    transform: rotate(1deg) translateX(5px);
+  }
+  50% {
+    transform: rotate(-1deg) translateX(-5px);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .app__container {
+    border-radius: 0rem;
+  }
+  .app__container-bot {
+    gap: 0rem;
+  }
+  .app__container-bot-item {
+    border-radius: 0rem;
+  }
+  .temp {
+    font-size: 4.5rem;
+    padding: 0rem;
+  }
+  .app__container > span {
+    left: 10px;
   }
 }
